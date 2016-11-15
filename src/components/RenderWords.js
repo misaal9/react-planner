@@ -11,7 +11,6 @@ const paperStyle = {
     maxWidth: 768,
     marginTop: 20,
     marginBottom: 20,
-    display: 'block',
     padding: 10,
     textAlign: 'left',
     display: 'block',
