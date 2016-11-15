@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
 
-const headerTitle = 'Sample header Yo';
+const headerTitle = 'Word Cloud';
+
+const appBarStyle = {
+    marginBottom: 20,
+    textAlign: 'center'
+};
 
 class Header extends Component {
     render() {
         return (
-            <h2> { headerTitle } </h2>
+            <AppBar style={appBarStyle} title={headerTitle} />
         );
     }
 }

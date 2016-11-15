@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import RenderWordItem from './RenderWordItem';
+import {List} from 'material-ui/List';
+import Paper from 'material-ui/Paper';
 import _ from 'lodash';
 
+const paperStyle = {
+    height: 'auto',
+    width: '95%',
+    margin: 'auto',
+    maxWidth: 768,
+    marginTop: 20,
+    marginBottom: 20,
+    display: 'block',
+    padding: 10,
+    textAlign: 'left',
+    display: 'block',
+};
 
 class RenderWords extends Component {    
     renderWords() {
@@ -11,9 +25,11 @@ class RenderWords extends Component {
     
     render() {
         return (
-            <ul id="list">  
-                { this.renderWords() }
-            </ul>
+            <Paper style={paperStyle} zDepth={1}>
+                <List>
+                    { this.renderWords() }
+                </List>
+            </Paper>
         );
     }
 }
