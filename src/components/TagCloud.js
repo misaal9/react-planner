@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
+import RenderWords from './RenderWords';
 
 class TagCloud extends Component {
     render() {
         return (
             <div id="canvas" className="tag-cloud">
-                <ul id="list">
-                    <li><span>sample text 1</span></li>
-                    <li><span>sample text 2</span></li>
-                    <li><span>sample text 3</span></li>
-                </ul>
+                <RenderWords words={this.props.words} />
             </div>
         );
     }

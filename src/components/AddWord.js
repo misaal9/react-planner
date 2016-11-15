@@ -16,7 +16,7 @@ class AddWord extends Component {
     render() {
         return (
             <form onSubmit={ this.addWord.bind(this) }>
-                <input type="text" ref="newWord" placeholder="Enter text" /> <button type="button" onClick={ this.addWord.bind(this) } >Click</button>
+                <input type="text" ref="newWord" placeholder="Enter text" /> <button type="button" onClick={this.addWord.bind(this)} >Click</button>
             </form>
         );
     }

@@ -3,44 +3,45 @@ import Header from './components/Header';
 import AddWord from './components/AddWord';
 import TagCloud from './components/TagCloud';
 
-/*const words = [
+const words = [
     {
-        'text': 'sample text 1',
-        'size': 10
+        text: 'Lorem123',
+        weight: 50
     },
     {
-        'text': 'sample text 2',
-        'size': 10
+        text: 'Ipsum',
+        weight: 50
     },
     {
-        'text': 'sample text 3',
-        'size': 10
+        text: 'Hodor',
+        weight: 50
     }
-
-]*/
+];
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            words
+        }
+    }
 
     addWord(val) {
-        // fetch ui to append new word to
-        const ul = document.getElementById('list');
-        const li = document.createElement('li');
-        const newSpan = document.createElement('span');
-        
-        // value that was passed will be the value to add to view
-        newSpan.innerHTML = val;
-        
-        // append word
-        li.appendChild(newSpan);
-        ul.appendChild(li);
+        this.state.words.push({
+            text: val,
+            weight: 50
+        });
+        this.setState({
+            words: this.state.words
+        });
     }
 
     render() {
         return (
             <div className="app">
                 <Header />
-                <AddWord addWord={this.addWord.bind(this)} />
-                <TagCloud />
+                <AddWord words={words} addWord={this.addWord.bind(this)} />
+                <TagCloud words={words}/>
             </div>
         );
     }
