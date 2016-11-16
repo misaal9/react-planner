@@ -19,7 +19,7 @@ const paperStyle = {
 class RenderWords extends Component {    
     renderWords() {
         const props = this.props;
-        return _.map(props.words, (word, index) => <RenderWordItem word={word} key={index} /> );
+        return _.map(props.words, (word, index) => <RenderWordItem onDeleteItem={this.props.onDeleteItem.bind(this)} word={word} key={index} /> );
     }
     
     render() {

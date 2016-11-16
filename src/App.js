@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppContainer from './components/AppContainer';
 import Firebase from 'firebase';
+import _ from 'lodash';
 injectTapEventPlugin();
 
 var config = {
@@ -39,11 +40,18 @@ class App extends Component {
         });
         dbRef.set(this.state.words);
     }
+    
+    onDeleteItem(itemToDelete) {
+        _.remove(this.state.words, function(obj){
+            return obj.text === itemToDelete;
+        })
+        dbRef.set(this.state.words);
+    }
 
     render() {
         return (
             <MuiThemeProvider>
-                <AppContainer words={this.state.words} addWord={this.addWord.bind(this)} />
+                <AppContainer words={this.state.words} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
             </MuiThemeProvider>
         );
     }

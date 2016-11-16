@@ -18,7 +18,7 @@ class AddWord extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            showAddMessage: false
         };
     }
     
@@ -37,7 +37,7 @@ class AddWord extends Component {
     postSaveHandler() {
         this.refs.newWord.input.value = '';
         this.setState({
-            open: true
+            showAddMessage: true
         });
     }
 
@@ -54,7 +54,7 @@ class AddWord extends Component {
                     />
                     <RaisedButton onClick={this.addWord.bind(this)} secondary={true} label="Add Word" fullWidth={true} />
                     <Snackbar
-                      open={this.state.open}
+                      open={this.state.showAddMessage}
                       message="New word added successfully"
                       autoHideDuration={1000}
                       style={{

@@ -5,7 +5,7 @@ class TagCloud extends Component {
     render() {
         return (
             <div id="canvas" className="tag-cloud">
-                <RenderWords words={this.props.words} />
+                <RenderWords onDeleteItem={this.props.onDeleteItem.bind(this)} words={this.props.words} />
             </div>
         );
     }
