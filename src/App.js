@@ -2,45 +2,48 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppContainer from './components/AppContainer';
+import Firebase from 'firebase';
 injectTapEventPlugin();
 
-const words = [
-    {
-        text: 'Lorem123',
-        weight: 50
-    },
-    {
-        text: 'Ipsum',
-        weight: 50
-    },
-    {
-        text: 'Hodor',
-        weight: 50
-    }
-];
+var config = {
+    apiKey: "AIzaSyATcfGAQ72P5bnZmUI1eZgTHx5XKP9xLps",
+    authDomain: "react-planner.firebaseapp.com",
+    databaseURL: "https://react-planner.firebaseio.com",
+    storageBucket: "react-planner.appspot.com",
+    messagingSenderId: "367274963448"
+};
+
+Firebase.initializeApp(config);
+
+const dbRef = Firebase.database().ref().child('words');
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            words
+            words: null
         }
     }
 
+    componentWillMount() {
+        dbRef.on('value', snap => {
+            this.setState({
+                words: snap.val()
+            });
+        });
+    }
+    
     addWord(val) {
         this.state.words.push({
-            text: val,
-            weight: 50
+            text: val
         });
-        this.setState({
-            words: this.state.words
-        });
+        dbRef.set(this.state.words);
     }
 
     render() {
         return (
             <MuiThemeProvider>
-                <AppContainer words={words} addWord={this.addWord.bind(this)} />
+                <AppContainer words={this.state.words} addWord={this.addWord.bind(this)} />
             </MuiThemeProvider>
         );
     }
