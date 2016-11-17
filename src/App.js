@@ -42,10 +42,15 @@ class App extends Component {
     }
     
     onDeleteItem(itemToDelete) {
-        _.remove(this.state.words, function(obj){
-            return obj.text === itemToDelete;
-        })
-        dbRef.set(this.state.words);
+        if (this.state.words.length > 1) {
+            _.remove(this.state.words, function(obj){
+                return obj.text === itemToDelete;
+            })
+            dbRef.set(this.state.words);
+        }
+        
+        console.warn('You cann remote the only task in list. Add one more to remove this one.');
+        return;
     }
 
     render() {
