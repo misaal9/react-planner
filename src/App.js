@@ -39,7 +39,7 @@ class App extends Component {
     addWord(val) {
         //check if word already exists
         var isAddedAlready = _.find(this.state.words, function(word){
-            return word.text === val.trim();
+            return word.text === val.toLowerCase().trim();
         });
         if (!isAddedAlready) {
             this.state.words.push({
@@ -53,7 +53,7 @@ class App extends Component {
         } else {
             this.setState({
                 openSnackbar: true,
-                messageSnackbar: 'Word already added'
+                messageSnackbar: 'Task already added'
             });
         }
     }
