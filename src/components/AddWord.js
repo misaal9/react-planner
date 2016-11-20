@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import Snackbar from 'material-ui/Snackbar';
 import Paper from 'material-ui/Paper';
 
 const paperStyle = {
@@ -15,13 +14,6 @@ const paperStyle = {
 };
 
 class AddWord extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showAddMessage: false
-        };
-    }
-    
     addWord(e) {
         e.preventDefault();
         //const value = this.refs.newWord.value; //avoid this way if you're using refs with components.
@@ -37,7 +29,8 @@ class AddWord extends Component {
     postSaveHandler() {
         this.refs.newWord.input.value = '';
         this.setState({
-            showAddMessage: true
+            message: 'Added successfully',
+            open: true
         });
     }
 
@@ -53,14 +46,6 @@ class AddWord extends Component {
                         floatingLabelFixed={true}
                     />
                     <RaisedButton onClick={this.addWord.bind(this)} secondary={true} label="Add Word" fullWidth={true} />
-                    <Snackbar
-                      open={this.state.showAddMessage}
-                      message="New word added successfully"
-                      autoHideDuration={1000}
-                      style={{
-                          textAlign: 'center'
-                      }}
-                    />
                 </form>
             </Paper>
         );

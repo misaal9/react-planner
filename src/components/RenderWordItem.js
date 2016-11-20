@@ -5,6 +5,13 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import {red500} from 'material-ui/styles/colors';
 
 class RenderWordItem extends Component {
+    constructor(){
+        super();
+        this.state = {
+            open: false,
+            messageRemove: 'Task removed'
+        };
+    }
     onDeleteItem() {
         const itemToDelete = this.props.word.text;
         this.props.onDeleteItem(itemToDelete);
@@ -12,7 +19,9 @@ class RenderWordItem extends Component {
     
     render() {
         return (
-            <ListItem primaryText={this.props.word.text} leftIcon={<ActionGrade />} rightIcon={<ActionDelete onClick={this.onDeleteItem.bind(this)} color={red500} />}/>
+            <div>
+                <ListItem primaryText={this.props.word.text} leftIcon={<ActionGrade />} rightIcon={<ActionDelete onClick={this.onDeleteItem.bind(this)} color={red500} />}/>
+            </div>
         );
     }
 }
