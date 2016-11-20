@@ -43,7 +43,8 @@ class App extends Component {
         });
         if (!isAddedAlready) {
             this.state.words.push({
-                text: val
+                text: val,
+                isStarred: false
             });
             dbRef.set(this.state.words);
             this.setState({
@@ -77,11 +78,19 @@ class App extends Component {
         }
         
     }
+    
+    onStarClick(val) {
+        var item = _.find(this.state.words, function(word){
+            return word.text === val;
+        });
+        item.isStarred = !item.isStarred;
+        dbRef.set(this.state.words);
+    }
 
     render() {
         return (
             <div>
-                <AppContainer words={this.state.words} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
+                <AppContainer words={this.state.words} onStarClick={this.onStarClick.bind(this)} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
                 <Snackbar
                   open={this.state.openSnackbar}
                   message={this.state.messageSnackbar}

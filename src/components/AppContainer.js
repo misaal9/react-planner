@@ -9,7 +9,7 @@ class AppContainer extends Component {
             <div className="app">
                 <Header />
                 <AddWord words={this.props.words} addWord={this.props.addWord.bind(this)} />
-                <TagCloud onDeleteItem={this.props.onDeleteItem.bind(this)} words={this.props.words}/>
+                <TagCloud onStarClick={this.props.onStarClick.bind(this)} onDeleteItem={this.props.onDeleteItem.bind(this)} words={this.props.words}/>
             </div>            
         );
     }
