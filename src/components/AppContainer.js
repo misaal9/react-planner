@@ -7,7 +7,7 @@ class AppContainer extends Component {
     render() {
         return(
             <div className="app">
-                <Header />
+                <Header isLogged={this.props.isLogged} />
                 <AddWord words={this.props.words} addWord={this.props.addWord.bind(this)} />
                 <TagCloud onStarClick={this.props.onStarClick.bind(this)} onDeleteItem={this.props.onDeleteItem.bind(this)} words={this.props.words}/>
             </div>            

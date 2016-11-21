@@ -24,7 +24,8 @@ class App extends Component {
         this.state = {
             words: null,
             openSnackbar: false,
-            messageSnackbar: ''
+            messageSnackbar: '',
+            isLogged: true
         }
     }
 
@@ -94,7 +95,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <AppContainer words={this.state.words} onStarClick={this.onStarClick.bind(this)} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
+                <AppContainer isLogged={this.state.isLogged} words={this.state.words} onStarClick={this.onStarClick.bind(this)} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
                 <Snackbar
                   open={this.state.openSnackbar}
                   message={this.state.messageSnackbar}
