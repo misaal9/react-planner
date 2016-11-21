@@ -39,7 +39,7 @@ class App extends Component {
     addWord(val) {
         //check if word already exists
         var isAddedAlready = _.find(this.state.words, function(word){
-            return word.text === val.toLowerCase().trim();
+            return word.text.toLowerCase() === val.toLowerCase().trim();
         });
         if (!isAddedAlready) {
             this.state.words.push({
@@ -49,7 +49,7 @@ class App extends Component {
             dbRef.set(this.state.words);
             this.setState({
                 openSnackbar: true,
-                messageSnackbar: 'Updated successfully'
+                messageSnackbar: 'Added successfully'
             });
         } else {
             this.setState({
@@ -85,6 +85,10 @@ class App extends Component {
         });
         item.isStarred = !item.isStarred;
         dbRef.set(this.state.words);
+        this.setState({
+                openSnackbar: true,
+                messageSnackbar: 'Updated successfully'
+            });
     }
 
     render() {
