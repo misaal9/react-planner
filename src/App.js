@@ -49,7 +49,7 @@ class App extends Component {
             dbRef.set(this.state.words);
             this.setState({
                 openSnackbar: true,
-                messageSnackbar: 'Added successfully'
+                messageSnackbar: 'Updated successfully'
             });
         } else {
             this.setState({
