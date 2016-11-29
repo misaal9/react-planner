@@ -25,8 +25,20 @@ class App extends Component {
             words: null,
             openSnackbar: false,
             messageSnackbar: '',
-            isLogged: true
+            isLogged: false
         }
+    }
+    
+    logInUser() {
+        this.setState({
+            isLogged: true
+        });
+    }
+    
+    logOutUser() {
+        this.setState({
+            isLogged: false
+        });
     }
 
     componentWillMount() {
@@ -95,7 +107,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <AppContainer isLogged={this.state.isLogged} words={this.state.words} onStarClick={this.onStarClick.bind(this)} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
+                <AppContainer logInUser={this.logInUser.bind(this)} logOutUser={this.logOutUser.bind(this)} isLogged={this.state.isLogged} words={this.state.words} onStarClick={this.onStarClick.bind(this)} onDeleteItem={this.onDeleteItem.bind(this)} addWord={this.addWord.bind(this)} />
                 <Snackbar
                   open={this.state.openSnackbar}
                   message={this.state.messageSnackbar}

@@ -11,12 +11,12 @@ const appBarStyle = {
     textAlign: 'center'
 };
 
-const TITLE = {
+/*const TITLE = {
     loggedIn: 'Logged In',
     notLoggedIn: 'Not logged in'
-}
+}*/
 
-class LoggedIn extends Component {
+/*class LoggedIn extends Component {
     render() {
         return (
             <IconMenu 
@@ -30,7 +30,7 @@ class LoggedIn extends Component {
         );
     
     }
-}
+}*/
 
 class Header extends Component {
     renderIconMenu() {
@@ -47,12 +47,22 @@ class Header extends Component {
                 
             
     }
+    
+    logInUser() {
+        this.props.logInUser();
+    }
+    
+    logOutUser() {
+        this.props.logOutUser();
+    }
+    
     renderHeaderBar() {
         const props = this.props;
         if (props.isLogged) {
-            return <AppBar style={appBarStyle} title={TITLE.loggedIn} iconElementRight={<LoggedIn />} />
+            /*return <AppBar style={appBarStyle} title={TITLE.loggedIn} iconElementRight={<LoggedIn />} />*/
+            return <AppBar style={appBarStyle} iconElementRight={<FlatButton onClick={this.logOutUser.bind(this)} label='Log Out'/>} />
         } else {
-            return <AppBar style={appBarStyle} title={TITLE.notLoggedIn} iconElementRight={<FlatButton label='Login'/>} />
+            return <AppBar style={appBarStyle} iconElementRight={<FlatButton onClick={this.logInUser.bind(this)} label='Log In'/>} />
         }
     }
     render() {
