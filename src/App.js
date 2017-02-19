@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppContainer from './components/AppContainer';
 import Snackbar from 'material-ui/Snackbar';
 import Firebase from 'firebase';
+import UserInfo from './components/UserInfo';
 import _ from 'lodash';
 injectTapEventPlugin();
 
@@ -34,7 +35,8 @@ class App extends Component {
         var self = this;
         const provider = new Firebase.auth.GoogleAuthProvider();
         Firebase.auth().signInWithPopup(provider).then(function(result){
-            console.info('result', result);
+            console.info('result222', result.user);
+            UserInfo.setUserInfo(result.user);
             self.setState({
                 isLogged: true
             });
@@ -61,6 +63,7 @@ class App extends Component {
             if (user) {
                 console.info('User is logged in');
                 console.info('logged in user is: ', Firebase.auth().currentUser);
+                UserInfo.setUserInfo(user);
                 self.setState({
                     isLogged: true
                 });

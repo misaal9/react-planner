@@ -6,6 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import Divider from 'material-ui/Divider';
+import UserInfo from './UserInfo';
 
 const appBarStyle = {
     marginBottom: 20,
@@ -20,6 +21,14 @@ class UserDropDown extends Component {
     onLogOutHandler() {
         this.props.logOutUser();
     }
+    
+    onViewProfileHandler() {
+        console.info(UserInfo.getUserInfo());
+    };
+    
+    getUserDisplayName() {
+        return UserInfo.getUserInfo().displayName;
+    }
 
     renderUserDropDown() {
         const props = this.props;
@@ -28,9 +37,9 @@ class UserDropDown extends Component {
         
         return (
             <IconMenu iconButtonElement={<IconButton><SettingsIcon/></IconButton>}>
-                <MenuItem value={1} primaryText='Joe Black'/>
+                <MenuItem value={1} primaryText={this.getUserDisplayName()}/>
                 <Divider />
-                <MenuItem value={2} primaryText='View Profile'/>
+                <MenuItem value={2} primaryText='View Profile' onClick={this.onViewProfileHandler.bind(this)}/>
                 <MenuItem value={3} primaryText='Log Out' onClick={this.onLogOutHandler.bind(this)}/>
             </IconMenu>
         );
