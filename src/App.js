@@ -17,6 +17,7 @@ var config = {
 Firebase.initializeApp(config);
 
 const dbRef = Firebase.database().ref().child('words');
+let userId = null;
 
 class App extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ class App extends Component {
         Firebase.auth().onAuthStateChanged(function(user){
             if (user) {
                 console.info('User is logged in');
+                console.info('logged in user is: ', Firebase.auth().currentUser);
                 self.setState({
                     isLogged: true
                 });
