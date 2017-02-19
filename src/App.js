@@ -30,18 +30,46 @@ class App extends Component {
     }
     
     logInUser() {
-        this.setState({
-            isLogged: true
+        var self = this;
+        const provider = new Firebase.auth.GoogleAuthProvider();
+        Firebase.auth().signInWithPopup(provider).then(function(result){
+            console.info('result', result);
+            self.setState({
+                isLogged: true
+            });
+        }).catch(function(err){
+            console.error(err);
         });
     }
     
     logOutUser() {
-        this.setState({
-            isLogged: false
+        var self = this;
+        Firebase.auth().signOut().then(function(result){
+            self.setState({
+                isLogged: false
+            });
+        }).catch(function(err){
+            console.error(err);
         });
     }
 
     componentWillMount() {
+        var self = this;
+        // check if currentUser already exists or not
+        Firebase.auth().onAuthStateChanged(function(user){
+            if (user) {
+                console.info('User is logged in');
+                self.setState({
+                    isLogged: true
+                });
+            } else {
+                console.info('User is NOT logged in');
+                self.setState({
+                    isLogged: false
+                });
+            }
+        });
+        
         dbRef.on('value', snap => {
             this.setState({
                 words: snap.val()
