@@ -17,7 +17,8 @@ var config = {
 
 Firebase.initializeApp(config);
 
-const dbRef = Firebase.database().ref().child('words');
+//const dbRef = Firebase.database().ref().child('words');
+const dbRoot = Firebase.database().ref();
 let userId = null;
 
 class App extends Component {
@@ -31,12 +32,31 @@ class App extends Component {
         }
     }
     
+    addNewUser() {
+        const dbUsers = dbRoot.child('users/' + Firebase.auth().currentUser.uid);
+        const dummyData = {
+            text: 'Start adding tasks here',
+            isStarred: true
+        };
+        this.dbRef = Firebase.database().ref('users/' + Firebase.auth().currentUser.uid).child('words');
+        this.dbRootUserRef = Firebase.database().ref('users/' + Firebase.auth().currentUser.uid);
+        this.dbRootUserRef.once('value')
+        .then(function(snapshot){
+            var words = snapshot.val();
+            if (!words) {
+                dbUsers.child('words').child(0).set(dummyData);
+            }
+        })
+    }
+    
     logInUser() {
         var self = this;
         const provider = new Firebase.auth.GoogleAuthProvider();
         Firebase.auth().signInWithPopup(provider).then(function(result){
-            console.info('result222', result.user);
             UserInfo.setUserInfo(result.user);
+            
+            self.addNewUser();
+            
             self.setState({
                 isLogged: true
             });
@@ -61,27 +81,27 @@ class App extends Component {
         // check if currentUser already exists or not
         Firebase.auth().onAuthStateChanged(function(user){
             if (user) {
-                console.info('User is logged in');
-                console.info('logged in user is: ', Firebase.auth().currentUser);
+                self.addNewUser();
+                
                 UserInfo.setUserInfo(user);
+                
+                self.dbRef.on('value', snap => {
+                    self.setState({
+                        words: snap.val()
+                    });
+                });
+                
                 self.setState({
                     isLogged: true
                 });
             } else {
-                console.info('User is NOT logged in');
                 self.setState({
                     isLogged: false
                 });
             }
         });
-        
-        dbRef.on('value', snap => {
-            this.setState({
-                words: snap.val()
-            });
-        });
     }
-    
+
     addWord(val) {
         //check if word already exists
         var isAddedAlready = _.find(this.state.words, function(word){
@@ -92,7 +112,7 @@ class App extends Component {
                 text: val,
                 isStarred: false
             });
-            dbRef.set(this.state.words);
+            this.dbRef.set(this.state.words);
             this.setState({
                 openSnackbar: true,
                 messageSnackbar: 'Added successfully'
@@ -110,7 +130,7 @@ class App extends Component {
             _.remove(this.state.words, function(obj){
                 return obj.text === itemToDelete;
             })
-            dbRef.set(this.state.words);
+            this.dbRef.set(this.state.words);
             this.setState({
                 openSnackbar: true,
                 messageSnackbar: 'Removed successfully'
@@ -130,7 +150,7 @@ class App extends Component {
             return word.text === val;
         });
         item.isStarred = !item.isStarred;
-        dbRef.set(this.state.words);
+        this.dbRef.set(this.state.words);
         this.setState({
                 openSnackbar: true,
                 messageSnackbar: 'Updated successfully'

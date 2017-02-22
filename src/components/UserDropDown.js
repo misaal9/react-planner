@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import Divider from 'material-ui/Divider';
 import UserInfo from './UserInfo';
+import {white} from 'material-ui/styles/colors';
 
 const appBarStyle = {
     marginBottom: 20,
@@ -36,7 +37,7 @@ class UserDropDown extends Component {
         /*return <AppBar style={appBarStyle} iconElementRight={<FlatButton onClick={this.logOutUser.bind(this)} label='Log Out'/>} />*/
         
         return (
-            <IconMenu iconButtonElement={<IconButton><SettingsIcon/></IconButton>}>
+            <IconMenu iconButtonElement={<IconButton><SettingsIcon color={white}/></IconButton>}>
                 <MenuItem value={1} primaryText={this.getUserDisplayName()}/>
                 <Divider />
                 <MenuItem value={2} primaryText='View Profile' onClick={this.onViewProfileHandler.bind(this)}/>
