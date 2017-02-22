@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AddWord from './AddWord';
 import TagCloud from './TagCloud';
-import IconLock from 'material-ui/svg-icons/action/lock-outline';
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import BeforeLogIn from './BeforeLogIn'
 
 import Paper from 'material-ui/Paper';
 
@@ -34,10 +33,7 @@ class Header extends Component {
             )
         } else {
             return(
-                <Paper style={paperStyle}>
-                    <IconLock style={lockStyle} color={red500}/>
-                    <div>Log in to continue</div>
-                </Paper>
+                <BeforeLogIn />
             )
         }
     }
