@@ -78,16 +78,16 @@ class Header extends Component {
                     docked={false}
                     width={250}
                     open={this.state.drawerOpen}
-                    onRequestChange={(open) => this.setState({open})}>
+                    onRequestChange={(drawerOpen) => this.setState({drawerOpen})}>
                     <Paper style={paperStyle} zDepth={1} circle={true}>
                         <Avatar src={UserInfo.getUserInfo().photoURL} size={150} />    
                     </Paper>
-                    <MenuItem onClick={this.handleToggleDrawer.bind(this)} >Add Friends</MenuItem>
-                    <MenuItem onClick={this.handleToggleDrawer.bind(this)} >Start Trip</MenuItem>
-                    <MenuItem onClick={this.handleToggleDrawer.bind(this)} >My Dashboard</MenuItem>
+                    <MenuItem >Add Friends</MenuItem>
+                    <MenuItem >Start Trip</MenuItem>
+                    <MenuItem >My Dashboard</MenuItem>
                     <Divider />
-                    <MenuItem onClick={this.handleToggleDrawer.bind(this)} >Settings</MenuItem>
-                    <MenuItem onClick={this.handleToggleDrawer.bind(this)} >Help</MenuItem>
+                    <MenuItem >Settings</MenuItem>
+                    <MenuItem >Help</MenuItem>
                 </Drawer>
             </div>
         );
