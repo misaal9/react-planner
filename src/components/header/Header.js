@@ -5,12 +5,12 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import MenuItem from 'material-ui/MenuItem';
-import UserDropDown from './UserDropDown';
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
-import UserInfo from './UserInfo';
+import UserDropDown from './UserDropDown';
+import UserInfo from '../../services/UserInfo';
 
 const appBarStyle = {
     marginBottom: 20,

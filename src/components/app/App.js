@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import AppContainer from './components/AppContainer';
+import AppContainer from './AppContainer';
 import Snackbar from 'material-ui/Snackbar';
 import Firebase from 'firebase';
-import UserInfo from './components/UserInfo';
+import UserInfo from '../../services/UserInfo';
 import _ from 'lodash';
 injectTapEventPlugin();
 

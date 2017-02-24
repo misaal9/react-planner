@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RenderWords from './RenderWords';
 
-class TagCloud extends Component {
+class TaskList extends Component {
     render() {
         return (
             <div id="canvas" className="tag-cloud">
@@ -11,4 +11,4 @@ class TagCloud extends Component {
     }
 }
 
-export default TagCloud;
+export default TaskList;

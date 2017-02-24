@@ -6,8 +6,8 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import Divider from 'material-ui/Divider';
-import UserInfo from './UserInfo';
 import {white} from 'material-ui/styles/colors';
+import UserInfo from '../../services/UserInfo';
 
 const appBarStyle = {
     marginBottom: 20,
