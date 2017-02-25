@@ -2,27 +2,14 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
-import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
-import Paper from 'material-ui/Paper';
-import Avatar from 'material-ui/Avatar';
+import IconButton from 'material-ui/IconButton';
 import UserDropDown from './UserDropDown';
-import UserInfo from '../../services/UserInfo';
+//import AppDrawer from './AppDrawer';
 
 const appBarStyle = {
     marginBottom: 20,
     textAlign: 'center'
-};
-
-const paperStyle = {
-    height: 150,
-    width: 150,
-    margin: '20px auto',
-    textAlign: 'center',
-    display: 'block',
 };
 
 class Header extends Component {
@@ -43,6 +30,16 @@ class Header extends Component {
             drawerOpen: !this.state.drawerOpen
         });
     }
+    handleClose() {
+        this.setState({
+            drawerOpen: false
+        });
+    }
+    onDrawerStatehandler(newState) {
+        this.setState({
+            drawerOpen: newState
+        });
+    }
     renderHeaderButtons() {
         const props = this.props;
         if (props.isLogged) {
@@ -60,12 +57,6 @@ class Header extends Component {
         }
     };
     
-    handleClose() {
-        this.setState({
-            drawerOpen: false
-        });
-    }
-    
     render() {
         return (
             <div>
@@ -74,21 +65,7 @@ class Header extends Component {
                     iconElementRight={this.renderHeaderButtons()} 
                     iconElementLeft={this.renderIconLeft()}
                 />
-                <Drawer 
-                    docked={false}
-                    width={250}
-                    open={this.state.drawerOpen}
-                    onRequestChange={(drawerOpen) => this.setState({drawerOpen})}>
-                    <Paper style={paperStyle} zDepth={1} circle={true}>
-                        <Avatar src={UserInfo.getUserInfo().photoURL} size={150} />    
-                    </Paper>
-                    <MenuItem >Add Friends</MenuItem>
-                    <MenuItem >Start Trip</MenuItem>
-                    <MenuItem >My Dashboard</MenuItem>
-                    <Divider />
-                    <MenuItem >Settings</MenuItem>
-                    <MenuItem >Help</MenuItem>
-                </Drawer>
+                
             </div>
         );
     }

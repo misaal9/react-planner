@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 import Header from '../header/Header';
-import ToDoList from '../toDoList/ToDoList';
+import Container from '../container/Container';
 
 class AppContainer extends Component {
+    
+    renderAppSection() {
+        
+    }
+    
     render() {
         return(
             <div className="app">
                 <Header logInUser={this.props.logInUser.bind(this)} logOutUser={this.props.logOutUser.bind(this)} isLogged={this.props.isLogged} />
-                <ToDoList isLogged={this.props.isLogged} words={this.props.words} addWord={this.props.addWord.bind(this)} onStarClick={this.props.onStarClick.bind(this)} onDeleteItem={this.props.onDeleteItem.bind(this)}/>
+                <Container 
+                    isLogged={this.props.isLogged}
+                    logInUser={this.props.logInUser.bind(this)} 
+                    logOutUser={this.props.logOutUser.bind(this)} 
+                    words={this.props.words} 
+                    onStarClick={this.props.onStarClick.bind(this)} 
+                    onDeleteItem={this.props.onDeleteItem.bind(this)} 
+                    addWord={this.props.addWord.bind(this)}
+                />
             </div>            
         );
     }

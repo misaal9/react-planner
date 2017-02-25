@@ -4,7 +4,6 @@
 let userDetails = {};
 
 function getUserInfo() {
-    console.info('getUserInfo', userDetails);
     return userDetails;
 }
 

@@ -30,7 +30,7 @@ class BeforeLogIn extends Component {
                 <div style={smallerText}>
                     You can use this app to plan get togethers by adding your friends and planning an itenerary together
                 </div>
-                <div>Loggin in makes it easier to save your data</div>
+                <div>Logging in makes it easier to save your data</div>
             </div>
         );
     }
