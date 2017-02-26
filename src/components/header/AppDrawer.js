@@ -39,7 +39,7 @@ class AppDrawer extends Component {
                 docked={SETTINGS.docked}
                 width={SETTINGS.width}
                 open={this.props.drawerState}>
-                //onRequestChange={this.onRequestChangeHandler(this.props.drawerState)}
+                onRequestChange={this.onRequestChangeHandler(this.props.drawerState)}
                 <Paper style={paperStyle} zDepth={1} circle={true}>
                     <Avatar src={UserInfo.getUserInfo().photoURL} size={150} />    
                 </Paper>
