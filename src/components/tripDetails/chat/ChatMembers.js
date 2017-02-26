@@ -9,8 +9,10 @@ const styles = {
     },
     wrapper: {
         display: 'flex',
-        flexWrap: 'wrap',
-        margin: '5px 0 20px'
+        flexWrap: 'nowrap',
+        margin: '0 0px 10px',
+        overflowX: 'scroll',
+        padding: '10px 0',
     }
 };
 

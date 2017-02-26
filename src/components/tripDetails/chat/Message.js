@@ -5,12 +5,12 @@ const style = {
         padding: '5px 10px',
         background: '#fff',
         marginBottom: '10px',
-        width: 'auto',
+        width: '70%',
         display: 'inline-block',
         borderRadius: '2px'
     },
     meta: {
-        fontSize: '10px',
+        fontSize: '0.8em',
         color: '#ccc',
         marginTop: '2px'
     }

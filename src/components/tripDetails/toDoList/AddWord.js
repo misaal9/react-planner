@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 const paperStyle = {
     height: 'auto',
     width: '95%',
-    margin: 'auto',
+    margin: '20px auto',
     maxWidth: 768,
     padding: 10,
     textAlign: 'center',

@@ -7,10 +7,15 @@ import IconButton from 'material-ui/IconButton';
 import UserDropDown from './UserDropDown';
 //import AppDrawer from './AppDrawer';
 
-const appBarStyle = {
-    marginBottom: 20,
-    textAlign: 'center'
-};
+const style = {
+    buttons: {
+        color: '#fff',
+        margin: '5px 0'
+    },
+    appBarStyle: {
+        textAlign: 'center'
+    }
+}
 
 class Header extends Component {
     constructor(props) {
@@ -30,6 +35,9 @@ class Header extends Component {
             drawerOpen: !this.state.drawerOpen
         });
     }
+    aboutSection(){
+        console.info('about section');
+    }
     handleClose() {
         this.setState({
             drawerOpen: false
@@ -40,15 +48,20 @@ class Header extends Component {
             drawerOpen: newState
         });
     }
-    renderHeaderButtons() {
+    renderRightSetion() {
         const props = this.props;
         if (props.isLogged) {
             return <UserDropDown logOutUser={this.logOutUser.bind(this)}/>;
         } else {
-            return <FlatButton onClick={this.logInUser.bind(this)} label='Log In'/>;
-        }
+            return (
+                <div>
+                    <FlatButton style={style.buttons} onClick={this.aboutSection.bind(this)} label='What is this?'/>
+                    <FlatButton style={style.buttons} onClick={this.logInUser.bind(this)} label='Log In'/>
+                </div>
+            );
+        };
     }
-    renderIconLeft() {
+    renderLeftSection() {
         const props = this.props;
         if (props.isLogged){
             return <IconButton><MenuIcon onClick={this.handleToggleDrawer.bind(this)} /></IconButton>;
@@ -61,9 +74,9 @@ class Header extends Component {
         return (
             <div>
                 <AppBar 
-                    style={appBarStyle} 
-                    iconElementRight={this.renderHeaderButtons()} 
-                    iconElementLeft={this.renderIconLeft()}
+                    style={style.appBarStyle} 
+                    iconElementRight={this.renderRightSetion()} 
+                    iconElementLeft={this.renderLeftSection()}
                 />
                 
             </div>
