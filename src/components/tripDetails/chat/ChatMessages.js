@@ -7,7 +7,7 @@ const styles = {
         background: '#eee',
         padding: '10px',
         boxShadow: 'inset 2px 2px 2px #ddd',
-        height: '350px',
+        minHeight: '200px',
         display: 'flex',
         flexDirection: 'column-reverse'
     }

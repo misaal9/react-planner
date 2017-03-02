@@ -6,8 +6,7 @@ class Container extends Component {
     renderContainer(){
         if (this.props.isLogged) {
             return (
-                <div>
-                    <TripDetails 
+                    <TripDetails
                         props={this.props} 
                         isLogged={this.props.isLogged}
                         logInUser={this.props.logInUser.bind(this)} 
@@ -17,7 +16,6 @@ class Container extends Component {
                         onDeleteItem={this.props.onDeleteItem.bind(this)} 
                         addWord={this.props.addWord.bind(this)} 
                     />
-                </div>
             );
         } else {
             return (
@@ -28,7 +26,7 @@ class Container extends Component {
     
     render() {
         return (
-            <div>
+            <div className="container" >
                 {this.renderContainer()}
             </div>
         )

@@ -3,7 +3,6 @@ import ToDoList from '../toDoList/ToDoList';
 import ChatBox from '../chat/ChatBox';
 import MapBox from '../map/MapBox';
 
-
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconMaps from 'material-ui/svg-icons/communication/location-on';
@@ -14,14 +13,22 @@ const toDoIcon = <IconToDoList />;
 const mapsIcon = <IconMaps />;
 const chatIcon = <IconChat />;
 
+const style={
+    landingPage: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '92vh',
+        marginTop: '8vh'
+    }
+};
+
 const sectionHolderStyles = {
-    marginBottom: '80px'
+    //marginBottom: '80px'
 }
 
 const paperBottomNavStyles = {
     width: '100%',
-    position: 'fixed',
-    bottom: 0
 };
 
 class LandingPage extends Component {
@@ -105,7 +112,7 @@ class LandingPage extends Component {
     
     render() {
         return (
-            <div>
+            <div style={style.landingPage}>
                 <div style={sectionHolderStyles}> {this.renderLandingPage()} </div>
                 <div> {this.renderBottomNavigation()} </div>
             </div>

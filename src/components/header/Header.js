@@ -13,7 +13,10 @@ const style = {
         margin: '5px 0'
     },
     appBarStyle: {
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'fixed',
+        top: 0,
+        maxHeight: '8vh'
     }
 }
 
