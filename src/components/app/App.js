@@ -17,9 +17,7 @@ var config = {
 
 Firebase.initializeApp(config);
 
-//const dbRef = Firebase.database().ref().child('words');
 const dbRoot = Firebase.database().ref();
-let userId = null;
 
 class App extends Component {
     constructor(props) {

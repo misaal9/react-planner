@@ -2,15 +2,6 @@ import React, {Component} from 'react';
 import Header from '../header/Header';
 import Container from '../container/Container';
 
-const style = {
-    app: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100vh'
-    }
-};
-
 class AppContainer extends Component {
     
     renderAppSection() {

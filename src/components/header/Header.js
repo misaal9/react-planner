@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
-import IconMenu from 'material-ui/IconMenu';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import IconButton from 'material-ui/IconButton';
 import UserDropDown from './UserDropDown';
-//import AppDrawer from './AppDrawer';
 
 const style = {
     buttons: {
@@ -62,6 +60,7 @@ class Header extends Component {
                     <FlatButton style={style.buttons} onClick={this.logInUser.bind(this)} label='Log In'/>
                 </div>
             );
+        // eslint-disable-next-line
         };
     }
     renderLeftSection() {

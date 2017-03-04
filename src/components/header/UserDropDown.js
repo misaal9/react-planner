@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -8,11 +6,6 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import Divider from 'material-ui/Divider';
 import {white} from 'material-ui/styles/colors';
 import UserInfo from '../../services/UserInfo';
-
-const appBarStyle = {
-    marginBottom: 20,
-    textAlign: 'center'
-};
 
 class UserDropDown extends Component {
     onLogOutHandler() {
@@ -28,10 +21,6 @@ class UserDropDown extends Component {
     }
 
     renderUserDropDown() {
-        const props = this.props;
-        
-        /*return <AppBar style={appBarStyle} iconElementRight={<FlatButton onClick={this.logOutUser.bind(this)} label='Log Out'/>} />*/
-        
         return (
             <IconMenu iconButtonElement={<IconButton><SettingsIcon color={white}/></IconButton>}>
                 <MenuItem value={1} primaryText={this.getUserDisplayName()}/>

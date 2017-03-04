@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions/*, CardHeader*/, CardMedia, CardTitle/*, CardText*/} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import IconStar from 'material-ui/svg-icons/toggle/star';
-import {red500} from 'material-ui/styles/colors';
 
 const card = {
     img: '../../img/card.svg',
@@ -31,7 +28,7 @@ class BeforeLogIn extends Component {
             <div style={style.wrapper}>
                 <Card style={style.card}>
                     <CardMedia>
-                        <img src={card.img3} />
+                        <img role='presentation' src={card.img3} />
                     </CardMedia>
                     <CardTitle title='Collaborate trips with friends' subtitle='A simple trip organizer. Integrated with useful checklists, maps, and a chat platform.' />
                     <CardActions>
@@ -41,7 +38,7 @@ class BeforeLogIn extends Component {
             
                 <Card style={style.card}>
                     <CardMedia>
-                        <img src={card.img5} />
+                        <img role='presentation' src={card.img5} />
                     </CardMedia>
                     <CardTitle title='A common to-do list' subtitle='Create and collaborate on important checklists before you head out.' />
                     <CardActions>
@@ -51,7 +48,7 @@ class BeforeLogIn extends Component {
             
                 <Card style={style.card}>
                     <CardMedia>
-                        <img src={card.img2} />
+                        <img role='presentation' src={card.img2} />
                     </CardMedia>
                     <CardTitle title='Share map locations' subtitle='Mark places you and your friends are planning to visit.' />
                     <CardActions>
@@ -61,7 +58,7 @@ class BeforeLogIn extends Component {
             
                 <Card style={style.card}>
                     <CardMedia>
-                        <img src={card.img4} />
+                        <img role='presentation' src={card.img4} />
                     </CardMedia>
                     <CardTitle title='Stay in touch' subtitle='Chat client helps you coordinate. Or even share pictures after you are back.' />
                     <CardActions>

@@ -98,15 +98,12 @@ class LandingPage extends Component {
         switch (this.state.currentSection) {
             case 0:
                 return self.renderTodoList();
-                break;
             case 1:
                 return self.renderMaps();
-                break;
             case 2:
                 return self.renderChats();
-                break;
             default:
-                self.renderTodoList();
+                return self.renderTodoList();
         }
     }
     
